@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://h85o3x6a7yb6"]
+
+[ext_resource type="ArrayMesh" uid="uid://dbx56nkksfwgj" path="res://assets/furniture/OBJ format/lampSquareCeiling.obj" id="1_op5qo"]
+
+[node name="ceilinglamp" type="Node3D"]
+
+[node name="LampSquareCeiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("1_op5qo")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.119422, 0.2)
+omni_range = 75.0

@@ -21,7 +21,7 @@ func _ready():
 	Input.set("mouse_mode", Input.MOUSE_MODE_CAPTURED)
 	
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		head.rotation.x =clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))

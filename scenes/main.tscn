@@ -1,39 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://fmn80e4nb82o"]
+[gd_scene load_steps=3 format=3 uid="uid://fmn80e4nb82o"]
 
 [ext_resource type="PackedScene" uid="uid://bopxcawiyr60w" path="res://scenes/house.tscn" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://b8em2roh7blvm" path="res://scenes/truc.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bxcxvdw3t5c8r" path="res://scenes/player.tscn" id="2_sugp2"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
-sky_top_color = Color(0.199226, 0.463299, 0.707889, 1)
-sky_curve = 0.109807
-sky_energy_multiplier = 10.0
-
-[sub_resource type="Sky" id="Sky_sugp2"]
-sky_material = SubResource("ProceduralSkyMaterial_0wfyh")
-
-[sub_resource type="Environment" id="Environment_jyhfs"]
-background_mode = 2
-sky = SubResource("Sky_sugp2")
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
-fog_light_color = Color(1, 1, 1, 1)
-fog_light_energy = 0.0
-fog_density = 0.0
-fog_sky_affect = 0.0
 
 [node name="Node" type="Node3D"]
 
 [node name="house" parent="." instance=ExtResource("1_0wfyh")]
 
-[node name="Marker3D" parent="house" index="1"]
-spawnable_objects = Array[PackedScene]([ExtResource("2_jyhfs")])
-size = Vector3(10, 0, 10)
-
 [node name="player" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59334, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_jyhfs")
-
-[editable path="house"]
+transform = Transform3D(-0.614065, 0, -0.789256, 0, 1, 0, 0.789256, 0, -0.614065, -2.63048, 1.59334, 3.30336)

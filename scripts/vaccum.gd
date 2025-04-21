@@ -4,4 +4,5 @@ func _ready():
 	self.connect("body_entered", vanish)
 
 func vanish(body: Node3D):
-	body.queue_free()
+	if Input.is_action_pressed("vaccum"):
+		body.queue_free()

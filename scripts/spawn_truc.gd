@@ -3,7 +3,7 @@ extends Marker3D
 @export var spawnable_objects : Array[PackedScene]
 @export var size : Vector3
 
-@export var max_spawnable : int = 30000
+@export var max_spawnable : int = 3000
 @export var local_velocity : Vector3 = Vector3.ZERO
 
 var spawned_objects : int = 0

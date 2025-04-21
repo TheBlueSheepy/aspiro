@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://duodkv1ct1v13"]
+
+[ext_resource type="ArrayMesh" uid="uid://d15416c5t8gch" path="res://assets/furniture/OBJ format/floorFull.obj" id="1_ukw5w"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kuqtn"]
+data = PackedVector3Array(0, 0.05, 0, 0, 0, 0, 0, 0.05, 1, 0, 0, 1, 0, 0.05, 1, 0, 0, 0, 0, 0.05, 0, 0, 0.05, 1, -1, 0.05, 0, -1, 0.05, 1, -1, 0.05, 0, 0, 0.05, 1, 0, 0, 1, 0, 0, 0, -1, 0, 1, -1, 0, 0, -1, 0, 1, 0, 0, 0, 0, 0, 1, -1, 0, 1, 0, 0.05, 1, -1, 0.05, 1, 0, 0.05, 1, -1, 0, 1, -1, 0, 0, 0, 0, 0, -1, 0.05, 0, 0, 0.05, 0, -1, 0.05, 0, 0, 0, 0, -1, 0, 0, -1, 0.05, 0, -1, 0, 1, -1, 0.05, 1, -1, 0, 1, -1, 0.05, 0, 0, 0.05, 0, 0, 0, 0, 0, 0.05, 1, 0, 0, 1, 0, 0.05, 1, 0, 0, 0, 0, 0.05, 0, 0, 0.05, 1, -1, 0.05, 0, -1, 0.05, 1, -1, 0.05, 0, 0, 0.05, 1, 0, 0, 1, 0, 0, 0, -1, 0, 1, -1, 0, 0, -1, 0, 1, 0, 0, 0, 0, 0, 1, -1, 0, 1, 0, 0.05, 1, -1, 0.05, 1, 0, 0.05, 1, -1, 0, 1, -1, 0, 0, 0, 0, 0, -1, 0.05, 0, 0, 0.05, 0, -1, 0.05, 0, 0, 0, 0, -1, 0, 0, -1, 0.05, 0, -1, 0, 1, -1, 0.05, 1, -1, 0, 1, -1, 0.05, 0)
+
+[node name="floor" type="Node3D"]
+
+[node name="FloorFull" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("1_ukw5w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FloorFull"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorFull/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_kuqtn")

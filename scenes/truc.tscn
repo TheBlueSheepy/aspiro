@@ -18,6 +18,8 @@ height = 0.2
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 4
 collision_mask = 10
+gravity_scale = 1.5
+linear_damp = 1.0
 script = ExtResource("1_obmwv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]

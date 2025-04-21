@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccsj8h8dl8lks"]
+
+[ext_resource type="ArrayMesh" uid="uid://dxlvnfp4oco8a" path="res://assets/furniture/OBJ format/televisionVintage.obj" id="1_nqyhj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0vvss"]
+points = PackedVector3Array(-0.2542, 0.108837, 0.262563, -0.0112467, 0.260563, 0.2, -0.0757134, 0.2319, 0.244227, -0.408296, 0.266825, 0, -0.00170444, 0, 0, -0.408296, 0, 0.0127197, -0.00170444, 0.266825, 0, -0.0112467, 0.0062621, 0.2, -0.398753, 0.260563, 0.2, -0.398753, 0.0062621, 0.2, -0.0740288, 0.039873, 0.245671, -0.2542, 0.231792, 0.262563, -0.335961, 0.0398521, 0.245696, -0.30024, 0, 0, -0.1558, 0.231869, 0.262664, -0.334248, 0.2319, 0.244227, -0.1558, 0.108818, 0.262664)
+
+[node name="tv" type="Node3D"]
+
+[node name="TelevisionVintage" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.23071, 0, -0.0394516)
+mesh = ExtResource("1_nqyhj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TelevisionVintage"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TelevisionVintage/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_0vvss")
