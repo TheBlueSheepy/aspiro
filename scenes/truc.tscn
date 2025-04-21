@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8em2roh7blvm"]
+
+[ext_resource type="Script" uid="uid://dqlu78wc1kjlk" path="res://scripts/dust.gd" id="1_obmwv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3x8w5"]
+radius = 0.0996636
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3x8w5"]
+albedo_color = Color(0.626603, 0.512824, 0.82253, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3x8w5"]
+material = SubResource("StandardMaterial3D_3x8w5")
+radius = 0.1
+height = 0.2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_obmwv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_3x8w5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_3x8w5")
+skeleton = NodePath("../..")

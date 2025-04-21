@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bopxcawiyr60w"]
+
+[ext_resource type="Material" uid="uid://coy4nf1ts2u0q" path="res://assets/grid_mat.tres" id="1_qtlar"]
+[ext_resource type="Script" uid="uid://trn5wfd7ho5q" path="res://scripts/spawn_truc.gd" id="2_rk7hg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x8wvn"]
+material = ExtResource("1_qtlar")
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8wvn"]
+size = Vector3(50, 1, 50)
+
+[node name="house" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 8
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_x8wvn")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_x8wvn")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27093, 0)
+script = ExtResource("2_rk7hg")

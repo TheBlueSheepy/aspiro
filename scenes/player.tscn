@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxcxvdw3t5c8r"]
+
+[ext_resource type="Script" uid="uid://dvt3d4tmsodui" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://6u3hbhp8o6e4" path="res://scripts/vaccum.gd" id="2_g2els"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3vyb7"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 1.344
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vyb7"]
+size = Vector3(0.1, 0.01, 0.2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
+radius = 0.0573261
+height = 0.253469
+
+[node name="player" type="CharacterBody3D"]
+collision_mask = 10
+script = ExtResource("1_3vyb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("CapsuleMesh_u8vuu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3vyb7")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80409, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 0.997631, -0.0687993, 0, 0.0687993, 0.997631, 0, 0, 0)
+cull_mask = 1048573
+
+[node name="aspiro" type="MeshInstance3D" parent="head"]
+transform = Transform3D(0.982164, 0.103494, 0.156979, -0.15483, -0.0285236, 0.987529, 0.106681, -0.994221, -0.011991, 0.360322, -0.363711, -0.861069)
+mesh = SubResource("CylinderMesh_3vyb7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/aspiro"]
+transform = Transform3D(-0.148336, -0.0430971, -0.987997, -0.452891, -0.885168, 0.106608, -0.879139, 0.463269, 0.111784, 0.0013184, 0.688179, 0.00697446)
+mesh = SubResource("BoxMesh_3vyb7")
+
+[node name="Area3D" type="Area3D" parent="head/aspiro"]
+transform = Transform3D(-0.0986858, -0.995098, -0.00648957, -0.616784, 0.0560474, 0.785134, -0.780922, 0.0814841, -0.619291, 0.0013184, 0.688179, 0.00697446)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_g2els")
+
+[node name="vaccum_zone" type="CollisionShape3D" parent="head/aspiro/Area3D"]
+transform = Transform3D(1, 1.49012e-08, 0, 7.45058e-09, 1, -9.31323e-10, -1.49012e-08, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_g2els")
+
+[node name="vaccum_marker" type="Marker3D" parent="head/aspiro" groups=["vaccum_marker"]]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, -0.00253072, 0.683736, 0.00568321)
