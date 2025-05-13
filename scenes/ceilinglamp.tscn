@@ -1,12 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://h85o3x6a7yb6"]
+[gd_scene load_steps=3 format=3 uid="uid://h85o3x6a7yb6"]
 
 [ext_resource type="ArrayMesh" uid="uid://dbx56nkksfwgj" path="res://assets/furniture/OBJ format/lampSquareCeiling.obj" id="1_op5qo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op5qo"]
+resource_name = "lamp"
+albedo_color = Color(1, 0.913725, 0.588235, 1)
+metallic = 0.33
+emission_enabled = true
+emission = Color(1, 0.913725, 0.588235, 1)
+emission_energy_multiplier = 2.5
 
 [node name="ceilinglamp" type="Node3D"]
 
 [node name="LampSquareCeiling" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 mesh = ExtResource("1_op5qo")
+surface_material_override/2 = SubResource("StandardMaterial3D_op5qo")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.119422, 0.2)

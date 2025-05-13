@@ -1,7 +1,9 @@
-extends Marker3D
+class_name Spawner
+extends Node
 
 @export var spawnable_objects : Array[PackedScene]
-@export var size : Vector3
+#@export var size : Vector3
+@export var shape : CollisionShape3D
 
 @export var max_spawnable : int = 3000
 @export var local_velocity : Vector3 = Vector3.ZERO
@@ -25,17 +27,17 @@ func _spawn():
 	add_sibling.call_deferred(node)
 	var offset : Vector3 = Vector3.ZERO
 
-	if size != Vector3.ZERO:
+	if shape.shape.size != Vector3.ZERO:
 		offset = Vector3(
-		randf_range(-size.x, size.x),
-		randf_range(-size.y, size.y),
-		randf_range(-size.z, size.z),
+		randf_range(-shape.shape.size.x, shape.shape.size.x),
+		randf_range(-shape.shape.size.y, shape.shape.size.y),
+		randf_range(-shape.shape.size.z, shape.shape.size.z),
 		)
 	
-	node.position = position + offset
+	node.position = shape.global_position + offset
 	
 	spawned_objects += 1
 
 	await get_tree().physics_frame
 	if node is RigidBody3D:
-		node.apply_central_impulse(quaternion * local_velocity)
+		node.apply_central_impulse(shape.quaternion * local_velocity)
